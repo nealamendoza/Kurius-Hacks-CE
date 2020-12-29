@@ -1,16 +1,14 @@
 
 import requests
-from flask import Flask, render_template, flash, request
+from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/' , methods = ['GET' , 'POST'])
+@app.route('/api' , methods = ['GET' , 'POST'])
 def home():
-    return render_template(
-        'index.html',
-
-    )
-
+    return{
+    'test': "yuh this is a test"
+    }
 
 if __name__ == "__main__":
     app.run(debug=True)
