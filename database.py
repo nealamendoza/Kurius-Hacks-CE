@@ -1,6 +1,8 @@
 import pymongo
 from keys import *
+import json
 from pymongo import MongoClient
+from pprint import pprint
 
 db = cluster["KuriusHacks"]
 collection = db["Events"]
@@ -34,4 +36,9 @@ def add_Event_To_Database(nameOfEvent, addressOfEvent, dateOfEvent, descOfEvent,
 
 
 def preview_database():
-    pass
+    events = []
+    results = collection.find({})
+    #results = data.json()
+    for x in results:
+        events.append(x)
+    return events
