@@ -2,9 +2,150 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>FromMeToYou *Change this later</title>
+    <title>FromMeToYou</title>
+    <link rel="stylesheet"href="{{ url_for('static', filename='stylesheets/index.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
-  <body>
-    Hello World
+  <body style="background-color: #4c5364; text-decoration-color:white;">
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#" style="font-style: italic;">FromMeToYou</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#events">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#submit">Submit An Event</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <!-- Top Of Page -->
+    <a href="#"></a>
+    <div id="carouselExampleIndicators" class="carousel slide mb-5" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+      </ol>
+      <div class="carousel-inner text-center">
+        <div class="carousel-item  active">
+          <img class="logo d-block h-50 w-100 " src="../static/photos/logo.v1.jpg" >
+        </div>
+        <div class="carousel-item">
+          <img class="picture d-block w-100" src="../static/photos/image1.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="picture d-block w-100" src="../static/photos/image2.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class=" picture d-block w-100" src="../static/photos/image3.jpg" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+          <img class="picture d-block w-100" src="../static/photos/image4.jpg" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+          <img class=" picture d-block w-100" src="../static/photos/image5.jpg" alt="Third slide">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Top of about part -->
+    <a name = "about"></a>
+    <div class="container my-5 about">
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center">What is From Me To You?</h2>
+          <p>
+            From me to you is a website utilized to help locate food drives that are happening and
+            to add your own food drive event. With this tool, you are able to organize an event to
+            help donate food for those in need. By sharing where and when the event will take place,
+            others will be able to attend the event and donate to your organization. This initiative was
+            created to help fight hunger and food security for those who need it.
+          </p>
+        </div>
+        <div class="col">
+          <h2 class="text-center">What are Food Drives?</h2>
+          <p>
+            Food drives are conducted by local organizations to help food banks, soup kitchens,
+            and other charities to donate supplies, such as canned goods and other non-perishable
+            items to those who cannot afford it. Local food banks rely on donations from the public
+            to help support their initiative so holding food drives are a great way to support them are
+            raise awareness of the situation.
+          </p>
+        </div>
+        <div class="col">
+          <h2 class="text-center">What are Food Banks?</h2>
+          <p>
+            Food banks are non-profit organizations that stores the donations that was given from
+            a food drive. These donations are distributed to food pantries or other organizations
+            that help with serving others.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Top of table -->
+    <a name = "events"></a>
+    <div class="container events my-5">
+      <table class=" my-5 table table-striped">
+          <thead>
+            <th scope = "col">Upcoming Food Drive Events</th>
+          </thead>
+          <tbody>
+            {% for event in events %}
+              <tr>
+                <td>
+                  <span style="font-weight: bold;">Name Of Event:</span> {{event.nameOfEvent}} <br>
+                  <span style="font-weight: bold;">Address Of Event:</span> {{event.addressOfEvent}}<br>
+                  <span style="font-weight: bold;">Date Of Event:</span> {{event.dateOfEvent}}<br>
+                  <span style="font-weight: bold;">Description:</span> {{event.descOfEvent}}<br>
+                  <span style="font-weight: bold;">Who To Contact:</span> {{event.contactInfo}}<br>
+
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    </div>
+
+    <!-- Event Form -->
+    <a name = "submit"></a>
+    <div class="container mt-5">
+      <form class="form-group" action="/" method="POST">
+        <label for="exampleFormControlInput1">Enter in the name of the event</label>
+        <input type="post" class="form-control" id="exampleFormControlInput1" placeholder="Event Name" name = "name">
+        <label for="exampleFormControlInput1">Enter in the address of the event</label>
+        <input type="post" class="form-control" id="exampleFormControlInput1" placeholder="123 Maple St. San Diego, California" name = "address">
+        <label for="exampleFormControlInput1">Enter in the date of the event</label>
+        <input type="post" class="form-control" id="exampleFormControlInput1" placeholder="1/1/2021. From 1PM - 7PM" name = "date">
+        <label for="exampleFormControlInput1">Enter in a description for the event</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+        <label for="exampleFormControlInput1">Enter Contact Info</label>
+        <input type="post" class="form-control" id="exampleFormControlInput1" placeholder="johndoe@gmail.com (123)456-7890" name = "contact">
+        <button type="submit" class="btn btn-primary my-5 submit-button">Enter Event</button>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
