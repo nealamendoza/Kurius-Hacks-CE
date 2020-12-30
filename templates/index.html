@@ -6,7 +6,7 @@
     <link rel="stylesheet"href="{{ url_for('static', filename='stylesheets/index.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
-  <body style="background-color: #4c5364; text-decoration-color:white;">
+  <body style="background-color: #4c5364; text-decoration-color:white; color:white;">
     <!-- NavBar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#" style="font-style: italic;">FromMeToYou</a>
@@ -71,6 +71,7 @@
     <div class="container my-5 about">
       <div class="row">
         <div class="col">
+          <img class="mx-auto d-block" src="../static/photos/sub1.png" alt="pic">
           <h2 class="text-center">What is From Me To You?</h2>
           <p>
             From me to you is a website utilized to help locate food drives that are happening and
@@ -81,6 +82,7 @@
           </p>
         </div>
         <div class="col">
+          <img class="mx-auto d-block" src="../static/photos/sub2.png" alt="pic">
           <h2 class="text-center">What are Food Drives?</h2>
           <p>
             Food drives are conducted by local organizations to help food banks, soup kitchens,
@@ -91,11 +93,14 @@
           </p>
         </div>
         <div class="col">
+          <img class="mx-auto d-block" src="../static/photos/sub3.png" alt="pic">
           <h2 class="text-center">What are Food Banks?</h2>
           <p>
             Food banks are non-profit organizations that stores the donations that was given from
             a food drive. These donations are distributed to food pantries or other organizations
-            that help with serving others.
+            that help with serving others.Some food banks operate on the "front line" model,
+            giving out food directly to the hungry.It is considered a storehouse for millions of
+            pounds of food and other products that go out to the community
           </p>
         </div>
       </div>
@@ -105,24 +110,24 @@
     <!-- Top of table -->
     <a name = "events"></a>
     <div class="container events my-5">
+      <h1 class="text-center">
+        Upcoming Food Drives
+      </h1>
       <table class=" my-5 table table-striped">
-          <thead>
-            <th scope = "col">Upcoming Food Drive Events</th>
-          </thead>
-          <tbody>
-            {% for event in events %}
-              <tr>
-                <td>
-                  <span style="font-weight: bold;">Name Of Event:</span> {{event.nameOfEvent}} <br>
-                  <span style="font-weight: bold;">Address Of Event:</span> {{event.addressOfEvent}}<br>
-                  <span style="font-weight: bold;">Date Of Event:</span> {{event.dateOfEvent}}<br>
-                  <span style="font-weight: bold;">Description:</span> {{event.descOfEvent}}<br>
-                  <span style="font-weight: bold;">Who To Contact:</span> {{event.contactInfo}}<br>
-
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
+        <tbody>
+          {% for event in events %}
+            <tr>
+              <td>
+                <span style="font-weight: bold;">Name Of Event:</span> {{event.nameOfEvent}} <br>
+                <span style="font-weight: bold;">Address Of Event:</span> {{event.addressOfEvent}}<br>
+                <span style="font-weight: bold;">Date Of Event:</span> {{event.dateOfEvent}}<br>
+                <span style="font-weight: bold;">Description:</span> {{event.descOfEvent}}<br>
+                <span style="font-weight: bold;">Who To Contact:</span> {{event.contactInfo}}<br>
+                <button type="button" name="button">Contact Organizer</button>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
       </table>
     </div>
 

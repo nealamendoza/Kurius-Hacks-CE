@@ -17,3 +17,7 @@ body{
   background-color: #4c5364;
   text-decoration-color: white;
 }
+
+td{
+  font-size: 25px;
+}
